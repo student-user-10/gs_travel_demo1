@@ -5,7 +5,8 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = "Dhany2005"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Dhany%402005@localhost/gs_travels"
+# Update this line for PostgreSQL
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://postgres:Dhany%402005@localhost/gs_travels"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -22,11 +23,9 @@ def index():
     if request.method == "POST":
         # Extract form data
         name = request.form.get('Name')
-       
         contact_no = request.form.get('contactno')
         pickup = request.form.get('Pickup')
         destination = request.form.get('Destiny')
-        # You can add more validation here if needed
 
         # Create new booking
         booking = Booking(
@@ -42,4 +41,4 @@ def index():
     return render_template("index.html", allbooking=allbooking)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
