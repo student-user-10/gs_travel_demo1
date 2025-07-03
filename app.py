@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__)
-app.secret_key = "Dhany2005"
+app.secret_key = os.environ.get("SECRET_KEY")
+
 
 # Update this line for PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://postgres:Dhany%402005@localhost/gs_travels"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
