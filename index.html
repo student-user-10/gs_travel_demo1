@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GS Travels</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">GS Travels</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Experiences</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Adventure Awaits, Go Find It</h1>
+      <p>Discover breathtaking destinations, curated experiences, and seamless booking with GS Travels. Your adventure begins here.</p>
+      <button class="cta" onclick="document.querySelector('.booking-form').scrollIntoView({behavior:'smooth'})">Book Now</button>
+    </div>
+  </section>
+
+  <!-- Corrected Booking Form -->
+  <form class="booking-form" action="/" method="POST">
+    <h2>Booking Form</h2>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="Name" placeholder="Enter Your Name" required>
+    <label for="contactno">Contact Number</label>
+    <input type="number" id="contactno" name="contactno" placeholder="Enter Your Contact Number" required>
+    <label for="pickup">Pickup Location</label>
+    <input type="text" id="pickup" name="Pickup" placeholder="Start Point" required>
+    <label for="destination">Destination</label>
+    <input type="text" id="destination" name="Destiny" placeholder="Your Arrival Location" required>
+    <label for="datetime">Date & Time</label>
+    <input type="datetime-local" id="datetime" name="datetime" placeholder="Enter date and time" required>
+    <input type="submit" value="Book My Trip">
+  </form>
+
+  <!-- Optional: Display Bookings Table (Flask integration) -->
+  <!-- {% if allbooking %}
+  <section class="bookings">
+    <h2>All Bookings</h2>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact No</th>
+        <th>Pickup</th>
+        <th>Destination</th>
+        <th>Booking Time</th>
+      </tr>
+      {% for booking in allbooking %}
+      <tr>
+        <td>{{ booking.id }}</td>
+        <td>{{ booking.name }}</td>
+        <td>{{ booking.email }}</td>
+        <td>{{ booking.contact_no }}</td>
+        <td>{{ booking.pickup }}</td>
+        <td>{{ booking.destination }}</td>
+        <td>{{ booking.booking_time }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </section>
+  {% endif %} -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <section class="destinations">
+    <div class="destination-card">
+      <img src="{{ url_for('static', filename='images/img1.jpg') }}" alt="Omkareshwar">
+      <div class="info">
+        <h3>Omkareshwar Jyotirlinga, Madhya Pradesh</h3>
+        <p>Whitewashed villages, blue domes, and sunsets that will steal your heart.</p>
+      </div>
+    </div>
+    <div class="destination-card">
+      <img src="{{ url_for('static', filename='images/img2.jpg') }}" alt="Khatu Syam">
+      <div class="info">
+        <h3>Khatu, Rajasthan</h3>
+        <p>The god of Kali Yug.</p>
+      </div>
+    </div>
+    <div class="destination-card">
+      <img src="{{ url_for('static', filename='images/img3.jpg') }}" alt="Sanwariya Seth">
+      <div class="info">
+        <h3>Mandaphia, Rajasthan</h3>
+        <p>Feel the presence of god.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
